@@ -270,7 +270,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden font-[family-name:var(--font-inter)]">
+    <div className="min-h-screen bg-black text-white overflow-x-hidden font-[family-name:var(--font-jakarta)]">
       {/* Gradient orbs background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -left-32 w-96 h-96 bg-zinc-800/30 rounded-full blur-3xl" />
@@ -283,14 +283,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Image src="/bot.png" alt="Televerse" width={36} height={36} />
-            <span className="font-semibold text-lg font-[family-name:var(--font-space-grotesk)]">
-              Televerse
+            <span className="font-semibold text-lg font-[family-name:var(--font-outfit)]">
+              televerse.
             </span>
           </div>
           <div className="flex items-center gap-6">
             <Link
               href="/docs"
-              target="_blank"
               rel="noopener noreferrer"
               className="text-zinc-400 hover:text-white transition-colors text-sm"
             >
@@ -343,7 +342,7 @@ export default function Home() {
         {/* Tagline */}
         <h1
           ref={taglineRef}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold text-center max-w-5xl leading-tight font-[family-name:var(--font-space-grotesk)]"
+          className="text-4xl md:text-6xl lg:text-7xl font-bold text-center max-w-5xl leading-tight font-[family-name:var(--font-outfit)]"
         >
           Your Gateway to Seamless{" "}
           <span className="bg-gradient-to-r from-zinc-100 via-zinc-400 to-zinc-100 bg-clip-text text-transparent">
@@ -386,7 +385,6 @@ export default function Home() {
           </Link>
           <Link
             href="/docs"
-            target="_blank"
             rel="noopener noreferrer"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
@@ -435,7 +433,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
             <div key={index} className="stat-item text-center">
-              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-b from-white to-zinc-500 bg-clip-text text-transparent font-[family-name:var(--font-space-grotesk)]">
+              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-b from-white to-zinc-500 bg-clip-text text-transparent font-[family-name:var(--font-outfit)]">
                 {stat.value}
               </div>
               <div className="mt-2 text-zinc-400 text-sm uppercase tracking-wider">
@@ -450,7 +448,7 @@ export default function Home() {
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-[family-name:var(--font-space-grotesk)]">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-[family-name:var(--font-outfit)]">
               Elegantly Simple, Incredibly Powerful
             </h2>
             <p className="text-zinc-400 max-w-2xl mx-auto">
@@ -493,7 +491,7 @@ export default function Home() {
       <section ref={featuresRef} className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-[family-name:var(--font-space-grotesk)]">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-[family-name:var(--font-outfit)]">
               Built for Modern Bot Development
             </h2>
             <p className="text-zinc-400 max-w-2xl mx-auto">
@@ -509,7 +507,7 @@ export default function Home() {
                 className="feature-card group p-6 bg-zinc-900/30 backdrop-blur-sm rounded-2xl border border-zinc-800/50 hover:border-zinc-700 transition-all hover:bg-zinc-900/50"
               >
                 <span className="text-4xl mb-4 block">{feature.icon}</span>
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-white transition-colors font-[family-name:var(--font-space-grotesk)]">
+                <h3 className="text-xl font-semibold mb-2 group-hover:text-white transition-colors font-[family-name:var(--font-outfit)]">
                   {feature.title}
                 </h3>
                 <p className="text-zinc-400 text-sm leading-relaxed">
@@ -525,7 +523,7 @@ export default function Home() {
       <section className="py-24 px-6 bg-gradient-to-b from-transparent via-zinc-900/30 to-transparent">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-[family-name:var(--font-space-grotesk)]">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-[family-name:var(--font-outfit)]">
               Revolutionary Filter System
             </h2>
             <p className="text-zinc-400 max-w-2xl mx-auto">
@@ -569,7 +567,7 @@ export default function Home() {
       {/* Final CTA Section */}
       <section ref={finalCtaRef} className="py-32 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-[family-name:var(--font-space-grotesk)]">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-[family-name:var(--font-outfit)]">
             Ready to Build?
           </h2>
           <p className="text-xl text-zinc-400 mb-10 max-w-2xl mx-auto">
@@ -624,7 +622,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
               <Image src="/bot.png" alt="Televerse" width={32} height={32} />
-              <span className="font-semibold font-[family-name:var(--font-space-grotesk)]">
+              <span className="font-semibold font-[family-name:var(--font-outfit)]">
                 Televerse
               </span>
               <span className="text-zinc-500 text-sm">
@@ -643,7 +641,6 @@ export default function Home() {
               </Link>
               <Link
                 href="/docs"
-                target="_blank"
                 rel="noopener noreferrer"
                 className="text-zinc-400 hover:text-white transition-colors text-sm"
               >

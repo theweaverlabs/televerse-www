@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-// Inter - clean, modern, highly readable for body text
-const inter = Inter({
-  variable: "--font-inter",
+// Plus Jakarta Sans - modern, geometric, excellent legibility for UI/body
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
   display: "swap",
 });
 
-// Space Grotesk - distinctive, geometric, perfect for headlines/branding
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+// Outfit - geometric, highly distinctive, premium feel for branding
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
   display: "swap",
 });
@@ -22,6 +22,7 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
 });
+
 
 export const metadata: Metadata = {
   title: "Televerse | The Dart Telegram Bot Framework",
@@ -60,7 +61,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased bg-black`}
+        className={`${plusJakarta.variable} ${outfit.variable} ${jetbrainsMono.variable} antialiased bg-black`}
       >
         {children}
       </body>
