@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@tailwindcss/typography": "^0.5.19",
     "@types/prismjs": "^1.26.5",
     "gsap": "^3.14.2",
     "next": "16.1.4",
