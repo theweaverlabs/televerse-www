@@ -165,6 +165,4 @@ Contributions to improve the website are welcome! Feel free to:
   
   Made with ❤️ by [Weaver Labs](https://weaverlabs.ca)
   
-  **Bot API 9.3** • Built with Dart 💙
-  
 </div>
