@@ -1,4 +1,4 @@
-import { Sidebar } from "@/components/docs";
+import { Sidebar, TableOfContents } from "@/components/docs";
 
 export default function DocsLayout({
     children,
@@ -17,10 +17,20 @@ export default function DocsLayout({
             {/* Sidebar */}
             <Sidebar />
 
-            {/* Main Content */}
-            <main className="ml-72 min-h-screen relative">
-                {children}
-            </main>
+            {/* Main Content with ToC */}
+            <div className="lg:ml-72 min-h-screen relative">
+                <div className="flex">
+                    {/* Main content area */}
+                    <main className="flex-1 min-w-0">
+                        {children}
+                    </main>
+
+                    {/* Table of Contents - Right Sidebar */}
+                    <aside className="hidden xl:block w-56 shrink-0 pr-8 pt-12">
+                        <TableOfContents />
+                    </aside>
+                </div>
+            </div>
         </div>
     );
 }

@@ -285,7 +285,7 @@ export default function Home() {
           <div className="flex items-center gap-3">
             <Image src="/bot.png" alt="Televerse" width={36} height={36} />
             <span className="font-semibold text-lg font-[family-name:var(--font-space-grotesk)]">
-              Televerse
+              televerse.
             </span>
           </div>
           <div className="flex items-center gap-6">
