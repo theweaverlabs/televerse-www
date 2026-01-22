@@ -1,26 +1,152 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ededed;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+/* ============================================
+   Prism.js Custom Dark Theme for Televerse
+   ============================================ */
+
+/* Base code styling */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #e4e4e7 !important;
+  text-shadow: none !important;
+  direction: ltr !important;
+  text-align: left !important;
+  white-space: pre !important;
+  word-spacing: normal !important;
+  word-break: normal !important;
+  line-height: 1.7 !important;
+  tab-size: 2 !important;
+  hyphens: none !important;
+}
+
+pre[class*="language-"] {
+  overflow: auto !important;
+}
+
+/* Comments - muted gray, italic */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #71717a !important;
+  font-style: italic !important;
+}
+
+/* Punctuation - subtle gray */
+.token.punctuation {
+  color: #a1a1aa !important;
+}
+
+.token.namespace {
+  opacity: 0.8 !important;
+}
+
+/* Numbers, booleans, constants - warm amber */
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #fbbf24 !important;
+}
+
+/* Strings - soft lime green */
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #a3e635 !important;
+}
+
+/* Operators - neutral */
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #d4d4d8 !important;
+}
+
+/* Keywords - soft purple */
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #c084fc !important;
+}
+
+/* Functions and class names - soft blue */
+.token.function,
+.token.class-name {
+  color: #60a5fa !important;
+}
+
+/* Regex and variables - soft pink */
+.token.regex,
+.token.important,
+.token.variable {
+  color: #f472b6 !important;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold !important;
+}
+
+.token.italic {
+  font-style: italic !important;
+}
+
+.token.entity {
+  cursor: help !important;
 }
