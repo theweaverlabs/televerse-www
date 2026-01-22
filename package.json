@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@types/prismjs": "^1.26.5",
     "gsap": "^3.14.2",
     "next": "16.1.4",
+    "prismjs": "^1.30.0",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },

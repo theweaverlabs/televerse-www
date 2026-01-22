@@ -4,6 +4,14 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Prism from "prismjs";
+// Import additional Prism languages for Dart-like syntax
+import "prismjs/components/prism-dart";
+import "prismjs/components/prism-javascript";
+import Link from "next/link";
+
+// Prevent Prism from automatically highlighting all code blocks
+Prism.manual = true;
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,19 +70,13 @@ void main() async {
   final bot = Bot<Context>('YOUR_BOT_TOKEN');
   
   // Command handlers
-  bot.command('start', (ctx) async {
-    await ctx.reply('🚀 Welcome to Televerse!');
-  });
+  bot.command('start', (ctx) => ctx.reply('🚀 Welcome to Televerse!'));
   
   // Filter-based handlers
-  bot.on(bot.filters.photo, (ctx) async {
-    await ctx.reply('Nice photo! 📸');
-  });
+  bot.on(bot.filters.photo, (ctx) => ctx.reply('Nice photo! 📸'));
   
   // Pattern matching
-  bot.hears(RegExp(r'(?i)hello'), (ctx) async {
-    await ctx.reply('Hello there! 👋');
-  });
+  bot.hears(RegExp(r'(?i)hello'), (ctx) => ctx.reply('Hello there! 👋'));
   
   await bot.start();
 }`;
@@ -89,6 +91,13 @@ export default function Home() {
   const codeRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const finalCtaRef = useRef<HTMLDivElement>(null);
+
+  // Syntax highlight code with Prism
+  const highlightedCode = Prism.highlight(
+    codeExample,
+    Prism.languages.dart,
+    "dart"
+  );
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -156,7 +165,8 @@ export default function Home() {
       );
 
       // Features scroll animation
-      const featureCards = featuresRef.current?.querySelectorAll(".feature-card");
+      const featureCards =
+        featuresRef.current?.querySelectorAll(".feature-card");
       if (featureCards) {
         gsap.set(featureCards, { opacity: 0, y: 80, scale: 0.95 });
 
@@ -260,7 +270,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="min-h-screen bg-black text-white overflow-x-hidden font-[family-name:var(--font-inter)]">
       {/* Gradient orbs background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -left-32 w-96 h-96 bg-zinc-800/30 rounded-full blur-3xl" />
@@ -273,41 +283,43 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Image src="/bot.png" alt="Televerse" width={36} height={36} />
-            <span className="font-semibold text-lg">Televerse</span>
+            <span className="font-semibold text-lg font-[family-name:var(--font-space-grotesk)]">
+              Televerse
+            </span>
           </div>
           <div className="flex items-center gap-6">
-            <a
-              href="https://televerse.weaverlabs.ca/docs/"
+            <Link
+              href="/docs"
               target="_blank"
               rel="noopener noreferrer"
               className="text-zinc-400 hover:text-white transition-colors text-sm"
             >
               Docs
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://github.com/theweaverlabs/televerse"
               target="_blank"
               rel="noopener noreferrer"
               className="text-zinc-400 hover:text-white transition-colors text-sm"
             >
               GitHub
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://telegram.me/TeleverseDart"
               target="_blank"
               rel="noopener noreferrer"
               className="text-zinc-400 hover:text-white transition-colors text-sm"
             >
               Telegram
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://pub.dev/packages/televerse"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 bg-white text-black rounded-full text-sm font-medium hover:bg-zinc-200 transition-colors"
             >
               Get Started
-            </a>
+            </Link>
           </div>
         </div>
       </nav>
@@ -331,7 +343,7 @@ export default function Home() {
         {/* Tagline */}
         <h1
           ref={taglineRef}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold text-center max-w-5xl leading-tight"
+          className="text-4xl md:text-6xl lg:text-7xl font-bold text-center max-w-5xl leading-tight font-[family-name:var(--font-space-grotesk)]"
         >
           Your Gateway to Seamless{" "}
           <span className="bg-gradient-to-r from-zinc-100 via-zinc-400 to-zinc-100 bg-clip-text text-transparent">
@@ -351,7 +363,7 @@ export default function Home() {
 
         {/* CTA Buttons */}
         <div ref={ctaRef} className="mt-10 flex flex-col sm:flex-row gap-4">
-          <a
+          <Link
             href="https://pub.dev/packages/televerse"
             target="_blank"
             rel="noopener noreferrer"
@@ -371,9 +383,9 @@ export default function Home() {
               <path d="M2 12l10 5 10-5" />
             </svg>
             Install from pub.dev
-          </a>
-          <a
-            href="https://televerse.weaverlabs.ca/docs/"
+          </Link>
+          <Link
+            href="/docs"
             target="_blank"
             rel="noopener noreferrer"
             onMouseMove={handleMouseMove}
@@ -394,7 +406,7 @@ export default function Home() {
               <line x1="10" y1="9" x2="8" y2="9" />
             </svg>
             Read Documentation
-          </a>
+          </Link>
         </div>
 
         {/* Scroll indicator */}
@@ -416,14 +428,14 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section ref={statsRef} className="py-20 px-6 border-y border-zinc-800/50">
+      <section
+        ref={statsRef}
+        className="py-20 px-6 border-y border-zinc-800/50"
+      >
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
-            <div
-              key={index}
-              className="stat-item text-center"
-            >
-              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-b from-white to-zinc-500 bg-clip-text text-transparent">
+            <div key={index} className="stat-item text-center">
+              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-b from-white to-zinc-500 bg-clip-text text-transparent font-[family-name:var(--font-space-grotesk)]">
                 {stat.value}
               </div>
               <div className="mt-2 text-zinc-400 text-sm uppercase tracking-wider">
@@ -438,7 +450,7 @@ export default function Home() {
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-[family-name:var(--font-space-grotesk)]">
               Elegantly Simple, Incredibly Powerful
             </h2>
             <p className="text-zinc-400 max-w-2xl mx-auto">
@@ -452,30 +464,27 @@ export default function Home() {
             className="relative bg-zinc-900/50 backdrop-blur-sm rounded-2xl border border-zinc-800 overflow-hidden"
           >
             {/* Window controls */}
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-zinc-800">
-              <div className="w-3 h-3 rounded-full bg-zinc-700" />
-              <div className="w-3 h-3 rounded-full bg-zinc-700" />
-              <div className="w-3 h-3 rounded-full bg-zinc-700" />
-              <span className="ml-4 text-zinc-500 text-sm">main.dart</span>
+            <div className="flex items-center gap-2 px-4 py-3 border-b border-zinc-800 bg-zinc-900/80">
+              <div className="w-3 h-3 rounded-full bg-red-500/70" />
+              <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
+              <div className="w-3 h-3 rounded-full bg-green-500/70" />
+              <span className="ml-4 text-zinc-500 text-sm font-[family-name:var(--font-jetbrains-mono)]">
+                main.dart
+              </span>
             </div>
 
-            {/* Code content */}
-            <pre className="p-6 overflow-x-auto text-sm md:text-base">
-              <code className="text-zinc-300 font-mono leading-relaxed">
-                {codeExample.split("\n").map((line, i) => (
-                  <div key={i} className="flex">
-                    <span className="w-8 text-zinc-600 select-none text-right mr-4">
-                      {i + 1}
-                    </span>
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: highlightCode(line),
-                      }}
-                    />
-                  </div>
-                ))}
-              </code>
-            </pre>
+            {/* Code content with Prism syntax highlighting */}
+            <div className="p-6 overflow-x-auto">
+              <pre
+                suppressHydrationWarning
+                className="text-sm md:text-base leading-relaxed"
+              >
+                <code
+                  className="language-dart font-[family-name:var(--font-jetbrains-mono)]"
+                  dangerouslySetInnerHTML={{ __html: highlightedCode }}
+                />
+              </pre>
+            </div>
           </div>
         </div>
       </section>
@@ -484,7 +493,7 @@ export default function Home() {
       <section ref={featuresRef} className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-[family-name:var(--font-space-grotesk)]">
               Built for Modern Bot Development
             </h2>
             <p className="text-zinc-400 max-w-2xl mx-auto">
@@ -500,7 +509,7 @@ export default function Home() {
                 className="feature-card group p-6 bg-zinc-900/30 backdrop-blur-sm rounded-2xl border border-zinc-800/50 hover:border-zinc-700 transition-all hover:bg-zinc-900/50"
               >
                 <span className="text-4xl mb-4 block">{feature.icon}</span>
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-white transition-colors">
+                <h3 className="text-xl font-semibold mb-2 group-hover:text-white transition-colors font-[family-name:var(--font-space-grotesk)]">
                   {feature.title}
                 </h3>
                 <p className="text-zinc-400 text-sm leading-relaxed">
@@ -516,7 +525,7 @@ export default function Home() {
       <section className="py-24 px-6 bg-gradient-to-b from-transparent via-zinc-900/30 to-transparent">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-[family-name:var(--font-space-grotesk)]">
               Revolutionary Filter System
             </h2>
             <p className="text-zinc-400 max-w-2xl mx-auto">
@@ -528,7 +537,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-6">
             <div className="p-6 bg-zinc-900/50 rounded-2xl border border-zinc-800">
               <div className="text-2xl mb-4">➕ OR Operator</div>
-              <code className="text-sm text-zinc-400 font-mono block bg-black/30 p-3 rounded-lg">
+              <code className="text-sm text-zinc-400 font-[family-name:var(--font-jetbrains-mono)] block bg-black/30 p-3 rounded-lg">
                 bot.filters.photo + bot.filters.video
               </code>
               <p className="mt-3 text-zinc-500 text-sm">
@@ -537,7 +546,7 @@ export default function Home() {
             </div>
             <div className="p-6 bg-zinc-900/50 rounded-2xl border border-zinc-800">
               <div className="text-2xl mb-4">✖️ AND Operator</div>
-              <code className="text-sm text-zinc-400 font-mono block bg-black/30 p-3 rounded-lg">
+              <code className="text-sm text-zinc-400 font-[family-name:var(--font-jetbrains-mono)] block bg-black/30 p-3 rounded-lg">
                 bot.filters.text * bot.filters.groupChat
               </code>
               <p className="mt-3 text-zinc-500 text-sm">
@@ -546,7 +555,7 @@ export default function Home() {
             </div>
             <div className="p-6 bg-zinc-900/50 rounded-2xl border border-zinc-800">
               <div className="text-2xl mb-4">➖ NOT Operator</div>
-              <code className="text-sm text-zinc-400 font-mono block bg-black/30 p-3 rounded-lg">
+              <code className="text-sm text-zinc-400 font-[family-name:var(--font-jetbrains-mono)] block bg-black/30 p-3 rounded-lg">
                 bot.filters.anyMessage - bot.filters.command
               </code>
               <p className="mt-3 text-zinc-500 text-sm">
@@ -560,7 +569,7 @@ export default function Home() {
       {/* Final CTA Section */}
       <section ref={finalCtaRef} className="py-32 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-[family-name:var(--font-space-grotesk)]">
             Ready to Build?
           </h2>
           <p className="text-xl text-zinc-400 mb-10 max-w-2xl mx-auto">
@@ -569,7 +578,7 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
+            <Link
               href="https://pub.dev/packages/televerse"
               target="_blank"
               rel="noopener noreferrer"
@@ -591,8 +600,8 @@ export default function Home() {
                   d="M13 7l5 5m0 0l-5 5m5-5H6"
                 />
               </svg>
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://github.com/theweaverlabs/televerse"
               target="_blank"
               rel="noopener noreferrer"
@@ -604,7 +613,7 @@ export default function Home() {
                 <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
               </svg>
               View on GitHub
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -615,45 +624,47 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
               <Image src="/bot.png" alt="Televerse" width={32} height={32} />
-              <span className="font-semibold">Televerse</span>
+              <span className="font-semibold font-[family-name:var(--font-space-grotesk)]">
+                Televerse
+              </span>
               <span className="text-zinc-500 text-sm">
                 Bot API 9.3 • Built with Dart
               </span>
             </div>
 
             <div className="flex items-center gap-6">
-              <a
+              <Link
                 href="https://pub.dev/packages/televerse"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-zinc-400 hover:text-white transition-colors text-sm"
               >
                 pub.dev
-              </a>
-              <a
-                href="https://televerse.weaverlabs.ca/docs/"
+              </Link>
+              <Link
+                href="/docs"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-zinc-400 hover:text-white transition-colors text-sm"
               >
                 Documentation
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://github.com/theweaverlabs/televerse"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-zinc-400 hover:text-white transition-colors text-sm"
               >
                 GitHub
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://telegram.me/TeleverseDart"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-zinc-400 hover:text-white transition-colors text-sm"
               >
                 Telegram
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -664,28 +675,4 @@ export default function Home() {
       </footer>
     </div>
   );
-}
-
-// Simple syntax highlighting function
-function highlightCode(line: string): string {
-  return line
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(
-      /(import|void|async|final|await)/g,
-      '<span class="text-zinc-500">$1</span>'
-    )
-    .replace(
-      /('package:[^']*'|'[^']*')/g,
-      '<span class="text-emerald-400/70">$1</span>'
-    )
-    .replace(
-      /\b(Bot|Context|RegExp)\b/g,
-      '<span class="text-zinc-100">$1</span>'
-    )
-    .replace(
-      /(\/\/.*$)/g,
-      '<span class="text-zinc-600">$1</span>'
-    );
 }
