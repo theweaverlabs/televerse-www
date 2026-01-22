@@ -669,7 +669,7 @@ export default function Home() {
           </div>
 
           <div className="mt-8 pt-8 border-t border-zinc-800/50 text-center text-zinc-500 text-sm">
-            <p>Made with ❤️ by Weaver Labs</p>
+            <p>Made with ❤️ by <Link href="https://weaverlabs.ca" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors text-sm">Weaver Labs</Link></p>
           </div>
         </div>
       </footer>
