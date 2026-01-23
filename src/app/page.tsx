@@ -9,6 +9,7 @@ import Prism from "prismjs";
 import "prismjs/components/prism-dart";
 import "prismjs/components/prism-javascript";
 import Link from "next/link";
+import { Navbar } from "@/components/common/Navbar";
 import { botApiVersion } from "@/consts";
 
 // Prevent Prism from automatically highlighting all code blocks
@@ -280,49 +281,7 @@ export default function Home() {
       </div>
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/50 border-b border-zinc-800/50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Image src="/bot.png" alt="Televerse" width={36} height={36} />
-            <span className="font-semibold text-lg font-[family-name:var(--font-space-grotesk)]">
-              televerse.
-            </span>
-          </div>
-          <div className="flex items-center gap-6">
-            <Link
-              href="/docs"
-              rel="noopener noreferrer"
-              className="text-zinc-400 hover:text-white transition-colors text-sm"
-            >
-              Docs
-            </Link>
-            <Link
-              href="https://github.com/theweaverlabs/televerse"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-zinc-400 hover:text-white transition-colors text-sm"
-            >
-              GitHub
-            </Link>
-            <Link
-              href="https://telegram.me/TeleverseDart"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-zinc-400 hover:text-white transition-colors text-sm"
-            >
-              Telegram
-            </Link>
-            <Link
-              href="https://pub.dev/packages/televerse"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 bg-white text-black rounded-full text-sm font-medium hover:bg-zinc-200 transition-colors"
-            >
-              Get Started
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
       <section
