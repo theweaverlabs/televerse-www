@@ -9,6 +9,7 @@ import Prism from "prismjs";
 import "prismjs/components/prism-dart";
 import "prismjs/components/prism-javascript";
 import Link from "next/link";
+import { Navbar } from "@/components/common/Navbar";
 import { botApiVersion } from "@/consts";
 
 // Prevent Prism from automatically highlighting all code blocks
@@ -92,6 +93,7 @@ export default function Home() {
   const codeRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const finalCtaRef = useRef<HTMLDivElement>(null);
+  const gradientTextRef = useRef<HTMLSpanElement>(null);
 
   // Syntax highlight code with Prism
   const highlightedCode = Prism.highlight(
@@ -142,6 +144,14 @@ export default function Home() {
         },
         "-=0.6"
       );
+
+      // Gradient text animation
+      gsap.to(gradientTextRef.current, {
+        backgroundPosition: "200% center",
+        duration: 8,
+        repeat: -1,
+        ease: "linear",
+      });
 
       heroTl.to(
         subtitleRef.current,
@@ -280,49 +290,7 @@ export default function Home() {
       </div>
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/50 border-b border-zinc-800/50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Image src="/bot.png" alt="Televerse" width={36} height={36} />
-            <span className="font-semibold text-lg font-[family-name:var(--font-space-grotesk)]">
-              televerse.
-            </span>
-          </div>
-          <div className="flex items-center gap-6">
-            <Link
-              href="/docs"
-              rel="noopener noreferrer"
-              className="text-zinc-400 hover:text-white transition-colors text-sm"
-            >
-              Docs
-            </Link>
-            <Link
-              href="https://github.com/theweaverlabs/televerse"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-zinc-400 hover:text-white transition-colors text-sm"
-            >
-              GitHub
-            </Link>
-            <Link
-              href="https://telegram.me/TeleverseDart"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-zinc-400 hover:text-white transition-colors text-sm"
-            >
-              Telegram
-            </Link>
-            <Link
-              href="https://pub.dev/packages/televerse"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 bg-white text-black rounded-full text-sm font-medium hover:bg-zinc-200 transition-colors"
-            >
-              Get Started
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
       <section
@@ -346,7 +314,10 @@ export default function Home() {
           className="text-4xl md:text-6xl lg:text-7xl font-bold text-center max-w-5xl leading-tight font-[family-name:var(--font-space-grotesk)]"
         >
           Your Gateway to Seamless{" "}
-          <span className="bg-gradient-to-r from-zinc-100 via-zinc-400 to-zinc-100 bg-clip-text text-transparent">
+          <span
+            ref={gradientTextRef}
+            className="inline-block bg-gradient-to-r from-zinc-100 via-zinc-400 to-zinc-100 bg-clip-text text-transparent bg-[length:200%_auto]"
+          >
             Telegram Bot Development
           </span>
         </h1>
@@ -404,7 +375,7 @@ export default function Home() {
               <line x1="16" y1="17" x2="8" y2="17" />
               <line x1="10" y1="9" x2="8" y2="9" />
             </svg>
-            Read Documentation
+            Read the docs
           </Link>
         </div>
 
@@ -624,7 +595,7 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <Image src="/bot.png" alt="Televerse" width={32} height={32} />
               <span className="font-semibold font-[family-name:var(--font-space-grotesk)]">
-                Televerse
+                televerse.
               </span>
               <span className="text-zinc-500 text-sm">
                 Bot API {botApiVersion} • Built with Dart
@@ -645,7 +616,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="text-zinc-400 hover:text-white transition-colors text-sm"
               >
-                Documentation
+                docs
               </Link>
               <Link
                 href="https://github.com/theweaverlabs/televerse"
@@ -653,7 +624,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="text-zinc-400 hover:text-white transition-colors text-sm"
               >
-                GitHub
+                source
               </Link>
               <Link
                 href="https://telegram.me/TeleverseDart"
@@ -661,7 +632,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="text-zinc-400 hover:text-white transition-colors text-sm"
               >
-                Telegram
+                chat
               </Link>
             </div>
           </div>

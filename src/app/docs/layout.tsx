@@ -18,7 +18,7 @@ export default function DocsLayout({
             <Sidebar />
 
             {/* Main Content with ToC */}
-            <div className="lg:ml-72 min-h-screen relative">
+            <div className="lg:ml-72 min-h-screen relative pt-16 lg:pt-0">
                 <div className="flex">
                     {/* Main content area */}
                     <main className="flex-1 min-w-0">
