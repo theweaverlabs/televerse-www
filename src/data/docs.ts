@@ -60,4 +60,14 @@ export const docsNavigation: DocsSection[] = [
             },
         ],
     },
+    {
+        title: "Building Interactive Bots",
+        items: [
+            {
+                title: "Keyboards",
+                href: "/docs/interactive/keyboards",
+                tags: ["keyboard", "inline keyboard", "buttons", "reply markup", "inline buttons"]
+            },
+        ],
+    },
 ];
