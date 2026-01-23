@@ -28,15 +28,25 @@ export const docsNavigation: DocsSection[] = [
                 href: "/docs/getting-started",
                 tags: ["hello world", "first bot", "example"]
             },
+            {
+                title: "Features",
+                href: "/docs/features",
+                tags: ["capabilities", "what can it do", "plugin system"]
+            },
         ],
     },
     {
         title: "Core Concepts",
         items: [
             {
-                title: "Features",
-                href: "/docs/features",
-                tags: ["capabilities", "what can it do", "plugin system"]
+                title: "Bot Class",
+                href: "/docs/core-concepts/bot",
+                tags: ["bot", "core", "initialization", "webhook", "polling"]
+            },
+            {
+                title: "Raw API",
+                href: "/docs/core-concepts/raw-api",
+                tags: ["api", "methods", "send message", "send photo", "raw"]
             },
         ],
     },
