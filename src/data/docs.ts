@@ -73,6 +73,11 @@ export const docsNavigation: DocsSection[] = [
                 href: "/docs/core-concepts/files",
                 tags: ["files", "upload", "download", "photo", "video", "document", "input file", "media"]
             },
+            {
+                title: "Handle Inline Queries",
+                href: "/docs/interactive/inline-queries",
+                tags: ["inline", "inline mode", "inline queries", "inline results", "search", "quote bot"]
+            },
         ],
     },
 ];
