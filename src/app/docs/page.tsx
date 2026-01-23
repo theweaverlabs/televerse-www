@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { DocContent } from "@/components/docs";
 import { botApiVersion } from "@/consts";
+
+export const metadata: Metadata = {
+    title: "Overview | Televerse Docs",
+    description: "A powerful, type-safe, and highly extensible Telegram Bot framework built with Dart. Zero dynamic types, full generic support.",
+};
 
 const quickLinks = [
     {

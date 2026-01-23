@@ -1,4 +1,24 @@
+import type { Metadata } from "next";
 import { Sidebar, TableOfContents } from "@/components/docs";
+
+export const metadata: Metadata = {
+    title: {
+        template: "%s | Televerse Docs",
+        default: "Televerse Documentation",
+    },
+    description: "Documentation for Televerse, the most powerful and type-safe Telegram Bot framework for Dart.",
+    openGraph: {
+        type: "website",
+        title: "Televerse Documentation",
+        description: "Everything you need to build powerful Telegram bots using Dart and Televerse.",
+        siteName: "Televerse Docs",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Televerse Documentation",
+        description: "Everything you need to build powerful Telegram bots using Dart and Televerse.",
+    },
+};
 
 export default function DocsLayout({
     children,

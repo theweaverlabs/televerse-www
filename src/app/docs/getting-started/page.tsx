@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { DocContent, CodeBlock } from "@/components/docs";
+
+export const metadata: Metadata = {
+    title: "Getting Started",
+    description: "Learn how to build your first Telegram bot with Televerse. From 'Hello World' to handling commands and updates.",
+};
 
 const basicBotCode = `import 'package:televerse/televerse.dart';
 

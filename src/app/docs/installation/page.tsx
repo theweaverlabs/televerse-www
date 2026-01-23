@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { DocContent, CodeBlock } from "@/components/docs";
 import { botApiVersion, televerseVersion } from "@/consts";
+
+export const metadata: Metadata = {
+    title: "Installation",
+    description: "Step-by-step guide to installing Televerse in your Dart project. Includes compatibility matrix and troubleshooting.",
+};
 
 const pubspecCode = `dependencies:
   televerse: ${televerseVersion}`;

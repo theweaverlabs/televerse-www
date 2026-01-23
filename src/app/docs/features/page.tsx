@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { DocContent, CodeBlock } from "@/components/docs";
+
+export const metadata: Metadata = {
+  title: "Features",
+  description: "Explore Televerse features: Type-safe Context, 80+ Filters, Plugin System, Middlewares, and standard Telegram API support.",
+};
 
 const filterBasicsCode = `// Simple filters
 bot.on(bot.filters.photo, (ctx) async {
