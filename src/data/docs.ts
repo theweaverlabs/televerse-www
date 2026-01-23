@@ -44,6 +44,11 @@ export const docsNavigation: DocsSection[] = [
                 tags: ["bot", "core", "initialization", "webhook", "polling"]
             },
             {
+                title: "Context",
+                href: "/docs/core-concepts/context",
+                tags: ["context", "update", "reply", "methods", "properties"]
+            },
+            {
                 title: "Raw API",
                 href: "/docs/core-concepts/raw-api",
                 tags: ["api", "methods", "send message", "send photo", "raw"]
