@@ -82,23 +82,33 @@ export default function InstallationPage() {
                         </thead>
                         <tbody className="text-zinc-300">
                             <tr className="border-b border-zinc-800/50">
-                                <td className="py-3 px-4">^1.20.0</td>
-                                <td className="py-3 px-4">&gt;=3.8.0</td>
+                                <td className="py-3 px-4">&gt;=3.1.0</td>
+                                <td className="py-3 px-4">&gt;=3.8</td>
                                 <td className="py-3 px-4">{botApiVersion}</td>
                             </tr>
                             <tr className="border-b border-zinc-800/50">
-                                <td className="py-3 px-4">^1.15.0</td>
-                                <td className="py-3 px-4">&gt;=3.0.0</td>
-                                <td className="py-3 px-4">7.9</td>
+                                <td className="py-3 px-4">&gt;=1.15.10 &lt;=3.0.1</td>
+                                <td className="py-3 px-4">&gt;=3.0</td>
+                                <td className="py-3 px-4">&lt;=9.2</td>
                             </tr>
                             <tr className="border-b border-zinc-800/50">
-                                <td className="py-3 px-4">^1.10.0</td>
-                                <td className="py-3 px-4">&gt;=2.19.0</td>
-                                <td className="py-3 px-4">7.0</td>
+                                <td className="py-3 px-4">&gt;=1.0.0 &lt;=1.15.9</td>
+                                <td className="py-3 px-4">&gt;=2.18</td>
+                                <td className="py-3 px-4">&lt;=7.2</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+                <p>
+                    For more information on version compatibility, see the{" "}
+                    <Link href="https://pub.dev/packages/televerse/changelog" target="_blank" rel="noopener noreferrer">
+                        changelog
+                    </Link> and{" "}
+                    {/* pub.dev versions */}
+                    <Link href="https://pub.dev/packages/televerse/versions" target="_blank" rel="noopener noreferrer">
+                        pub.dev versions
+                    </Link>.
+                </p>
             </section>
 
             {/* Next Steps */}
