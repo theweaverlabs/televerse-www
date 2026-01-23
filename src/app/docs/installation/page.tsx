@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { DocContent, CodeBlock } from "@/components/docs";
 import { botApiVersion, televerseVersion } from "@/consts";
+
+export const metadata: Metadata = {
+    title: "Installation",
+    description: "Step-by-step guide to installing Televerse in your Dart project. Includes compatibility matrix and troubleshooting.",
+};
 
 const pubspecCode = `dependencies:
   televerse: ${televerseVersion}`;
@@ -64,8 +70,10 @@ export default function InstallationPage() {
                 <CodeBlock code={importCode} language="dart" filename="main.dart" />
                 <p>
                     This single import gives you access to all Televerse classes, including the <code>Bot</code> class,
-                    <code>Context</code>, all Telegram models, and utilities.
+                    <code>Context</code>, and <code>RawAPI</code> wrapper for accessing Telegram Bot API methods.
+                    To import all Telegram models, and utilities, use:
                 </p>
+                <CodeBlock code="import 'package:televerse/telegram.dart';" language="dart" filename="main.dart" />
             </section>
 
             {/* Version Notes */}

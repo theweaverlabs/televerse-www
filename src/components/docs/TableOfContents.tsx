@@ -23,19 +23,30 @@ export function TableOfContents() {
 
             const elements = article.querySelectorAll("h2, h3");
             const items: TocItem[] = [];
+            const idCounts: Record<string, number> = {}; // Track ID occurrences for uniqueness
 
             elements.forEach((element, index) => {
                 // Generate ID if not present
                 if (!element.id) {
                     const text = element.textContent || "";
                     // Create slug from text, removing emojis and special chars
-                    const slug = text
+                    let slug = text
                         .toLowerCase()
                         .replace(/[^\w\s-]/g, "") // Remove emojis and special chars
                         .replace(/\s+/g, "-") // Replace spaces with hyphens
                         .replace(/-+/g, "-") // Remove consecutive hyphens
                         .trim();
-                    element.id = slug || `heading-${index}`;
+
+                    // Make the slug unique by appending a counter if needed
+                    const baseSlug = slug || `heading-${index}`;
+                    if (idCounts[baseSlug] !== undefined) {
+                        idCounts[baseSlug]++;
+                        slug = `${baseSlug}-${idCounts[baseSlug]}`;
+                    } else {
+                        idCounts[baseSlug] = 0;
+                        slug = baseSlug;
+                    }
+                    element.id = slug;
                 }
 
                 items.push({

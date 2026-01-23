@@ -3,43 +3,54 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-
-interface NavItem {
-    title: string;
-    href: string;
-}
-
-interface NavSection {
-    title: string;
-    items: NavItem[];
-}
-
-const navigation: NavSection[] = [
-    {
-        title: "Getting Started",
-        items: [
-            { title: "Overview", href: "/docs" },
-            { title: "Installation", href: "/docs/installation" },
-            { title: "Quick Start", href: "/docs/getting-started" },
-        ],
-    },
-    {
-        title: "Core Concepts",
-        items: [
-            { title: "Features", href: "/docs/features" },
-        ],
-    },
-];
+import { useState, useEffect, useRef, useMemo } from "react";
+import { docsNavigation, DocsSection } from "@/data/docs";
 
 export function Sidebar() {
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
+    const searchInputRef = useRef<HTMLInputElement>(null);
 
     // Close mobile menu when pathname changes
     useEffect(() => {
         setIsOpen(false);
     }, [pathname]);
+
+    // Handle CMD+K shortcut
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+                e.preventDefault();
+                searchInputRef.current?.focus();
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, []);
+
+    // Filter properties based on search query
+    const filteredNavigation = useMemo(() => {
+        if (!searchQuery.trim()) return docsNavigation;
+
+        const query = searchQuery.toLowerCase();
+        return docsNavigation.map((section) => {
+            const matchesItems = section.items.filter((item) => {
+                const titleMatch = item.title.toLowerCase().includes(query);
+                const tagsMatch = item.tags?.some(tag => tag.toLowerCase().includes(query));
+                return titleMatch || tagsMatch;
+            });
+
+            if (matchesItems.length > 0) {
+                return {
+                    ...section,
+                    items: matchesItems,
+                };
+            }
+            return null;
+        }).filter(Boolean) as DocsSection[];
+    }, [searchQuery]);
 
     return (
         <>
@@ -85,7 +96,7 @@ export function Sidebar() {
                 `}
             >
                 {/* Logo */}
-                <div className="flex items-center gap-3 px-6 py-5 border-b border-zinc-800/50 shrink-0">
+                <div className="flex flex-col gap-6 px-6 py-5 border-b border-zinc-800/50 shrink-0">
                     <Link href="/" className="flex items-center gap-3">
                         <Image src="/bot.png" alt="Televerse" width={32} height={32} />
                         <span className="font-semibold text-lg font-[family-name:var(--font-space-grotesk)]">
@@ -95,33 +106,61 @@ export function Sidebar() {
                 </div>
 
                 {/* Navigation */}
-
-                <nav className="px-4 py-6">
-                    {navigation.map((section) => (
-                        <div key={section.title} className="mb-6">
-                            <h3 className="px-3 mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500">
-                                {section.title}
-                            </h3>
-                            <ul className="space-y-1">
-                                {section.items.map((item) => {
-                                    const isActive = pathname === item.href;
-                                    return (
-                                        <li key={item.href}>
-                                            <Link
-                                                href={item.href}
-                                                className={`block px-3 py-2 rounded-lg text-sm transition-colors ${isActive
-                                                    ? "bg-zinc-800/70 text-white font-medium"
-                                                    : "text-zinc-400 hover:text-white hover:bg-zinc-800/40"
-                                                    }`}
-                                            >
-                                                {item.title}
-                                            </Link>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
+                <nav className="px-4 py-6 flex-1">
+                    {/* Search Input */}
+                    <div className="relative group mb-6">
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg className="h-4 w-4 text-zinc-500 group-focus-within:text-zinc-300 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
                         </div>
-                    ))}
+                        <input
+                            ref={searchInputRef}
+                            type="text"
+                            placeholder="Search docs..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="bg-zinc-900/50 border border-zinc-800 text-zinc-300 text-sm rounded-lg focus:ring-1 focus:ring-zinc-700 focus:border-zinc-700 block w-full pl-9 pr-12 py-2 placeholder-zinc-600 focus:outline-none transition-all"
+                        />
+                        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                            <kbd className="hidden lg:inline-flex items-center h-5 px-1.5 text-[10px] font-mono font-medium text-zinc-500 bg-zinc-800/50 rounded border border-zinc-700/50">
+                                ⌘K
+                            </kbd>
+                        </div>
+                    </div>
+
+                    {filteredNavigation.length === 0 ? (
+                        <div className="text-center text-zinc-500 py-8 text-sm">
+                            No results found for "{searchQuery}"
+                        </div>
+                    ) : (
+                        filteredNavigation.map((section) => (
+                            <div key={section.title} className="mb-6">
+                                <h3 className="px-3 mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+                                    {section.title}
+                                </h3>
+                                <ul className="space-y-1">
+                                    {section.items.map((item) => {
+                                        const isActive = pathname === item.href;
+                                        return (
+                                            <li key={item.href}>
+                                                <Link
+                                                    href={item.href}
+                                                    onClick={() => setIsOpen(false)}
+                                                    className={`block px-3 py-2 rounded-lg text-sm transition-colors ${isActive
+                                                        ? "bg-zinc-800/70 text-white font-medium"
+                                                        : "text-zinc-400 hover:text-white hover:bg-zinc-800/40"
+                                                        }`}
+                                                >
+                                                    {item.title}
+                                                </Link>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
+                        ))
+                    )}
                 </nav>
 
                 {/* Footer Links */}
