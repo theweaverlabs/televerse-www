@@ -93,6 +93,7 @@ export default function Home() {
   const codeRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const finalCtaRef = useRef<HTMLDivElement>(null);
+  const gradientTextRef = useRef<HTMLSpanElement>(null);
 
   // Syntax highlight code with Prism
   const highlightedCode = Prism.highlight(
@@ -143,6 +144,14 @@ export default function Home() {
         },
         "-=0.6"
       );
+
+      // Gradient text animation
+      gsap.to(gradientTextRef.current, {
+        backgroundPosition: "200% center",
+        duration: 8,
+        repeat: -1,
+        ease: "linear",
+      });
 
       heroTl.to(
         subtitleRef.current,
@@ -305,7 +314,10 @@ export default function Home() {
           className="text-4xl md:text-6xl lg:text-7xl font-bold text-center max-w-5xl leading-tight font-[family-name:var(--font-space-grotesk)]"
         >
           Your Gateway to Seamless{" "}
-          <span className="bg-gradient-to-r from-zinc-100 via-zinc-400 to-zinc-100 bg-clip-text text-transparent">
+          <span
+            ref={gradientTextRef}
+            className="inline-block bg-gradient-to-r from-zinc-100 via-zinc-400 to-zinc-100 bg-clip-text text-transparent bg-[length:200%_auto]"
+          >
             Telegram Bot Development
           </span>
         </h1>
