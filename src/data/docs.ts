@@ -53,6 +53,11 @@ export const docsNavigation: DocsSection[] = [
                 href: "/docs/core-concepts/raw-api",
                 tags: ["api", "methods", "send message", "send photo", "raw"]
             },
+            {
+                title: "Receiving Updates",
+                href: "/docs/core-concepts/receiving-updates",
+                tags: ["webhook", "polling", "long polling", "updates", "fetcher"]
+            },
         ],
     },
 ];
