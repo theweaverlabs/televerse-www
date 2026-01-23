@@ -68,6 +68,11 @@ export const docsNavigation: DocsSection[] = [
                 href: "/docs/interactive/keyboards",
                 tags: ["keyboard", "inline keyboard", "buttons", "reply markup", "inline buttons"]
             },
+            {
+                title: "Sending & Receiving Files",
+                href: "/docs/core-concepts/files",
+                tags: ["files", "upload", "download", "photo", "video", "document", "input file", "media"]
+            },
         ],
     },
 ];
