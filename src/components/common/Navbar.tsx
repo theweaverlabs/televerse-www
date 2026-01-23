@@ -25,7 +25,7 @@ export const Navbar = () => {
                             rel="noopener noreferrer"
                             className="text-zinc-400 hover:text-white transition-colors text-sm"
                         >
-                            Docs
+                            docs
                         </Link>
                         <Link
                             href="https://github.com/theweaverlabs/televerse"
@@ -33,7 +33,7 @@ export const Navbar = () => {
                             rel="noopener noreferrer"
                             className="text-zinc-400 hover:text-white transition-colors text-sm"
                         >
-                            GitHub
+                            source
                         </Link>
                         <Link
                             href="https://telegram.me/TeleverseDart"
@@ -41,7 +41,7 @@ export const Navbar = () => {
                             rel="noopener noreferrer"
                             className="text-zinc-400 hover:text-white transition-colors text-sm"
                         >
-                            Telegram
+                            chat
                         </Link>
                         <Link
                             href="https://pub.dev/packages/televerse"
@@ -49,7 +49,7 @@ export const Navbar = () => {
                             rel="noopener noreferrer"
                             className="px-4 py-2 bg-white text-black rounded-full text-sm font-medium hover:bg-zinc-200 transition-colors"
                         >
-                            Get Started
+                            get started
                         </Link>
                     </div>
 

@@ -363,7 +363,7 @@ export default function Home() {
               <line x1="16" y1="17" x2="8" y2="17" />
               <line x1="10" y1="9" x2="8" y2="9" />
             </svg>
-            Read Documentation
+            Read docs
           </Link>
         </div>
 
@@ -583,7 +583,7 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <Image src="/bot.png" alt="Televerse" width={32} height={32} />
               <span className="font-semibold font-[family-name:var(--font-space-grotesk)]">
-                Televerse
+                televerse.
               </span>
               <span className="text-zinc-500 text-sm">
                 Bot API {botApiVersion} • Built with Dart
@@ -604,7 +604,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="text-zinc-400 hover:text-white transition-colors text-sm"
               >
-                Documentation
+                docs
               </Link>
               <Link
                 href="https://github.com/theweaverlabs/televerse"
@@ -612,7 +612,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="text-zinc-400 hover:text-white transition-colors text-sm"
               >
-                GitHub
+                source
               </Link>
               <Link
                 href="https://telegram.me/TeleverseDart"
@@ -620,7 +620,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="text-zinc-400 hover:text-white transition-colors text-sm"
               >
-                Telegram
+                chat
               </Link>
             </div>
           </div>
