@@ -80,4 +80,14 @@ export const docsNavigation: DocsSection[] = [
             },
         ],
     },
+    {
+        title: "Advanced",
+        items: [
+            {
+                title: "Custom Context",
+                href: "/docs/advanced/custom-context",
+                tags: ["custom", "context", "extend", "factory", "generic", "type-safe", "mixin", "dependencies"]
+            },
+        ],
+    },
 ];
