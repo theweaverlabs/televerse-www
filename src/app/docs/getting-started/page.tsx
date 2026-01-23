@@ -5,12 +5,10 @@ const basicBotCode = `import 'package:televerse/televerse.dart';
 
 void main() async {
   // Create a new bot instance
-  final bot = Bot<Context>('YOUR_BOT_TOKEN');
+  final bot = Bot('YOUR_BOT_TOKEN');
 
   // Handle the /start command
-  bot.command('start', (ctx) async {
-    await ctx.reply('🚀 Welcome to Televerse!');
-  });
+  bot.command('start', (ctx) => ctx.reply('🚀 Welcome to Televerse!'));
 
   // Start listening for updates
   await bot.start();
