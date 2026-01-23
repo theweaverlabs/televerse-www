@@ -162,13 +162,13 @@ export default function BotClassPage() {
                 <h2>See Also</h2>
                 <ul>
                     <li>
-                        <Link href="/docs/core-concepts/context" className="text-white font-medium hover:underline">
+                        <Link href="/docs/core-concepts/context" className="text-white font-medium">
                             Context
                         </Link>
                         - Learn about the context object passed to handlers.
                     </li>
                     <li>
-                        <Link href="/docs/features/middleware" className="text-white font-medium hover:underline">
+                        <Link href="/docs/features/middleware" className="text-white font-medium">
                             Middleware
                         </Link>
                         - Understand how to use middleware in Televerse.

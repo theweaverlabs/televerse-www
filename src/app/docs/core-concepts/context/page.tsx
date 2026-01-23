@@ -214,13 +214,13 @@ export default function ContextPage() {
                 <h2>Next Steps</h2>
                 <ul>
                     <li>
-                        <Link href="/docs/core-concepts/bot" className="text-white font-medium hover:underline">
+                        <Link href="/docs/core-concepts/bot" className="text-white font-medium">
                             Bot Class
                         </Link>
                         - Learn about the main Bot class.
                     </li>
                     <li>
-                        <Link href="/docs/features/middleware" className="text-white font-medium hover:underline">
+                        <Link href="/docs/features/middleware" className="text-white font-medium">
                             Middleware
                         </Link>
                         - Dive deeper into the middleware system.

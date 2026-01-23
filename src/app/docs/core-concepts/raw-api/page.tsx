@@ -108,13 +108,13 @@ export default function RawAPIPage() {
                 <h2>See Also</h2>
                 <ul>
                     <li>
-                        <Link href="https://core.telegram.org/bots/api#available-methods" className="text-white font-medium hover:underline" target="_blank">
+                        <Link href="https://core.telegram.org/bots/api#available-methods" className="text-white font-medium" target="_blank">
                             Official Telegram Bot API
                         </Link>
                         - Full list of available methods and parameters.
                     </li>
                     <li>
-                        <Link href="/docs/core-concepts/bot" className="text-white font-medium hover:underline">
+                        <Link href="/docs/core-concepts/bot" className="text-white font-medium">
                             Bot Class
                         </Link>
                         - Learn about the main Bot class.
