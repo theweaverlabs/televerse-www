@@ -93,6 +93,16 @@ export const docsNavigation: DocsSection[] = [
                 href: "/docs/advanced/middleware",
                 tags: ["middleware", "pipeline", "use", "handler", "filter", "composer"]
             },
+            {
+                title: "Transformers",
+                href: "/docs/advanced/transformers",
+                tags: ["transformer", "api", "interceptor", "call", "request", "response"]
+            },
+            {
+                title: "Plugins",
+                href: "/docs/advanced/plugins",
+                tags: ["plugin", "module", "extension", "bottplugin", "middleware", "transformer"]
+            },
         ],
     },
     {
