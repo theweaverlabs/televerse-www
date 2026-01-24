@@ -2,6 +2,7 @@ export interface DocsItem {
     title: string;
     href: string;
     tags?: string[]; // Keywords for search
+    external?: boolean;
 }
 
 export interface DocsSection {
@@ -122,6 +123,18 @@ export const docsNavigation: DocsSection[] = [
                 title: "Conversation",
                 href: "/docs/plugins/conversation",
                 tags: ["plugin", "conversation", "dialogue", "wizard", "step-by-step"]
+            },
+            {
+                title: "Auto Retry",
+                href: "https://pub.dev/packages/auto_retry",
+                tags: ["plugin", "auto retry", "network", "stability", "resilience"],
+                external: true
+            },
+            {
+                title: "Parse Mode Setter",
+                href: "https://pub.dev/packages/parse_mode_setter",
+                tags: ["plugin", "parse mode", "formatting", "html", "markdown"],
+                external: true
             },
         ]
     },
