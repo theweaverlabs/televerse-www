@@ -88,6 +88,11 @@ export const docsNavigation: DocsSection[] = [
                 href: "/docs/advanced/custom-context",
                 tags: ["custom", "context", "extend", "factory", "generic", "type-safe", "mixin", "dependencies"]
             },
+            {
+                title: "Middleware",
+                href: "/docs/advanced/middleware",
+                tags: ["middleware", "pipeline", "use", "handler", "filter", "composer"]
+            },
         ],
     },
 ];

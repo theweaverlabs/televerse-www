@@ -220,7 +220,7 @@ export default function ContextPage() {
                         - Learn about the main Bot class.
                     </li>
                     <li>
-                        <Link href="/docs/features/middleware" className="text-white font-medium">
+                        <Link href="/docs/advanced/middleware" className="text-white font-medium">
                             Middleware
                         </Link>
                         - Dive deeper into the middleware system.
