@@ -136,7 +136,7 @@ export function Sidebar() {
                     ) : (
                         filteredNavigation.map((section) => (
                             <div key={section.title} className="mb-6">
-                                <h3 className="px-3 mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+                                <h3 className="px-3 mb-2 text-xs font-semibold uppercase tracking-wider text-white">
                                     {section.title}
                                 </h3>
                                 <ul className="space-y-1">
@@ -152,7 +152,7 @@ export function Sidebar() {
                                                         : "text-zinc-400 hover:text-white hover:bg-zinc-800/40"
                                                         }`}
                                                 >
-                                                    {item.title}
+                                                    &nbsp;&nbsp; {item.title}
                                                 </Link>
                                             </li>
                                         );

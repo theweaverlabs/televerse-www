@@ -81,6 +81,21 @@ export const docsNavigation: DocsSection[] = [
         ],
     },
     {
+        title: "Advanced",
+        items: [
+            {
+                title: "Custom Context",
+                href: "/docs/advanced/custom-context",
+                tags: ["custom", "context", "extend", "factory", "generic", "type-safe", "mixin", "dependencies"]
+            },
+            {
+                title: "Middleware",
+                href: "/docs/advanced/middleware",
+                tags: ["middleware", "pipeline", "use", "handler", "filter", "composer"]
+            },
+        ],
+    },
+    {
         title: "Plugins",
         items: [
             {
@@ -99,20 +114,5 @@ export const docsNavigation: DocsSection[] = [
                 tags: ["plugin", "conversation", "dialogue", "wizard", "step-by-step"]
             },
         ]
-    },
-    {
-        title: "Advanced",
-        items: [
-            {
-                title: "Custom Context",
-                href: "/docs/advanced/custom-context",
-                tags: ["custom", "context", "extend", "factory", "generic", "type-safe", "mixin", "dependencies"]
-            },
-            {
-                title: "Middleware",
-                href: "/docs/advanced/middleware",
-                tags: ["middleware", "pipeline", "use", "handler", "filter", "composer"]
-            },
-        ],
     },
 ];
