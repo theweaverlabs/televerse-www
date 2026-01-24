@@ -81,6 +81,26 @@ export const docsNavigation: DocsSection[] = [
         ],
     },
     {
+        title: "Plugins",
+        items: [
+            {
+                title: "Logging",
+                href: "/docs/plugins/logging",
+                tags: ["plugin", "logging", "debug", "logger", "monitor"]
+            },
+            {
+                title: "Session",
+                href: "/docs/plugins/session",
+                tags: ["plugin", "session", "storage", "persistence", "state"]
+            },
+            {
+                title: "Conversation",
+                href: "/docs/plugins/conversation",
+                tags: ["plugin", "conversation", "dialogue", "wizard", "step-by-step"]
+            },
+        ]
+    },
+    {
         title: "Advanced",
         items: [
             {
