@@ -82,7 +82,7 @@ export default function NotFound() {
                     <Link href="/" className="flex items-center gap-3">
                         <Image src="/bot.png" alt="Televerse" width={36} height={36} />
                         <span className="font-semibold text-lg font-[family-name:var(--font-space-grotesk)]">
-                            Televerse
+                            televerse.
                         </span>
                     </Link>
                 </div>

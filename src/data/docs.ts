@@ -2,6 +2,7 @@ export interface DocsItem {
     title: string;
     href: string;
     tags?: string[]; // Keywords for search
+    external?: boolean;
 }
 
 export interface DocsSection {
@@ -88,6 +89,53 @@ export const docsNavigation: DocsSection[] = [
                 href: "/docs/advanced/custom-context",
                 tags: ["custom", "context", "extend", "factory", "generic", "type-safe", "mixin", "dependencies"]
             },
+            {
+                title: "Middleware",
+                href: "/docs/advanced/middleware",
+                tags: ["middleware", "pipeline", "use", "handler", "filter", "composer"]
+            },
+            {
+                title: "Transformers",
+                href: "/docs/advanced/transformers",
+                tags: ["transformer", "api", "interceptor", "call", "request", "response"]
+            },
+            {
+                title: "Plugins",
+                href: "/docs/advanced/plugins",
+                tags: ["plugin", "module", "extension", "bottplugin", "middleware", "transformer"]
+            },
         ],
+    },
+    {
+        title: "Plugins",
+        items: [
+            {
+                title: "Logging",
+                href: "/docs/plugins/logging",
+                tags: ["plugin", "logging", "debug", "logger", "monitor"]
+            },
+            {
+                title: "Session",
+                href: "/docs/plugins/session",
+                tags: ["plugin", "session", "storage", "persistence", "state"]
+            },
+            {
+                title: "Conversation",
+                href: "/docs/plugins/conversation",
+                tags: ["plugin", "conversation", "dialogue", "wizard", "step-by-step"]
+            },
+            {
+                title: "Auto Retry",
+                href: "https://pub.dev/packages/auto_retry",
+                tags: ["plugin", "auto retry", "network", "stability", "resilience"],
+                external: true
+            },
+            {
+                title: "Parse Mode Setter",
+                href: "https://pub.dev/packages/parse_mode_setter",
+                tags: ["plugin", "parse mode", "formatting", "html", "markdown"],
+                external: true
+            },
+        ]
     },
 ];
