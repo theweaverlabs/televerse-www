@@ -1,0 +1,8 @@
+# Televerse - Dart Telegram Bot Framework
+# https://televerse.weaverlabs.ca
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://televerse.weaverlabs.ca/sitemap.xml
