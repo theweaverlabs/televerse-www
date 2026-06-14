@@ -1,2 +1,2 @@
-export const televerseVersion = "^4.0.0";
-export const botApiVersion = "10.0";
+export const televerseVersion = "^3.5.0";
+export const botApiVersion = "10.1";
